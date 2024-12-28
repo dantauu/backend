@@ -8,9 +8,7 @@ import cors from 'cors'
 
 //Подкючении к серверу 
 mongoose
-	.connect(
-		'mongodb+srv://user:55555@backcluster.p0ind.mongodb.net/blog?retryWrites=true&w=majority&appName=backCluster'
-	)
+	.connect(process.env.MONGODB_URI)
 	.then(() => console.log('DB Ok'))
 	.catch(err => console.log('error888', err))
     
@@ -28,7 +26,7 @@ app.post('/auth/register', registerValidator, register)
 //Если нет user'a - нет доступа 
 app.get('/auth/me', checkAuth, getMe)
 
-app.listen(4444, (err) => {
+app.listen(process.env.PORT || 4444, (err) => {
     if (err) {
         return console.log(err)
     }
