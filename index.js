@@ -3,8 +3,11 @@ import mongoose from 'mongoose';
 import { registerValidator } from './validations/auth.js';
 import checkAuth from './utils/checkAuth.js';
 import { register, login, getMe } from './controllers/userController.js';
+import dotenv from 'dotenv'
 import cors from 'cors'
 
+
+dotenv.config()
 
 //Подкючении к серверу 
 mongoose
